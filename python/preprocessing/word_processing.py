@@ -83,6 +83,6 @@ print(sample_text_wo_abbr_and_contr)
 
 ## Correcting spelling errors (repetition):
 word = "friiio"
-#corrected_word = remove_repeated_characters(word)
-#print(corrected_word)
+corrected_word = remove_repeated_characters(word)
+print(corrected_word)
 
