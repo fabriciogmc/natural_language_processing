@@ -1,2 +1,0 @@
-
-C:\\Users\\fabricio\\AppData\\Roaming\\nltk_data\\corpora\\mac_morpho\\macmorpho.zip
