@@ -1,5 +1,4 @@
 from sklearn.neural_network import MLPClassifier
-
 import numpy as np
 
 classified_reviews= [
@@ -66,9 +65,11 @@ for review in classified_reviews:
 classifier = MLPClassifier(solver='lbfgs', alpha=1e-5,
                     hidden_layer_sizes=(5, 3), random_state=1)
 
+
+
 classifier.fit(X, y)
+
 print(classifier.predict([unclassified_review['feature_vector']]))
 print(classifier.predict_proba([unclassified_review['feature_vector']]))
 print(classifier.classes_)
-
 
