@@ -8,7 +8,8 @@ class TextNormalizer:
     """ This class perform 'all' preprocessing operations in a simplified
     document. """
 
-    def __init__(self):
+    def __init__(self, stop_words=None):
+        self.stop_words = stop_words
         pass
 
     def sentence_tokenizer(self, doc, method='punctuation'):
@@ -45,6 +46,15 @@ class TextNormalizer:
         if method == 'upper':
             return word.upper()
         
+    def stop_words_removal(self, words):
+        ''' 
+        Stop words removal from an array of words
+        '''
+        words_without_stop_words = []
+        for word in words:
+            if word not in self.stop_words:
+                words_without_stop_words.append(word)           
+        return words_without_stop_words
 
 
 class TfIdfTransform:

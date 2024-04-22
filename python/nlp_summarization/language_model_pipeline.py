@@ -17,13 +17,18 @@ class BagOfWords:
         self.textNormalizer = textNormalizer
 
     def build_doc_vector(self):
+        ''' 
+        Builds a array of documents. Each document is
+        coposed of one or more sentences.
+        '''
         doc_array = []
         for i in range(len(self.corpus)):
             sentences = self.textNormalizer.sentence_tokenizer(self.corpus[i])
             doc_array.append(sentences)
         return doc_array
 
-    def build_model_lexicon(self):    
+    def build_model_lexicon(self):   
+        ''' Creates a lexicon that corresponds to language model''' 
         doc_array = self.build_doc_vector()
         model_lexicon = {}
         document_counter = 0
@@ -33,22 +38,24 @@ class BagOfWords:
             last_sentence = 0
             sentence_counter = 0
             for sentence in sentences: #single sentence
-                words = self.textNormalizer.word_tokenizer(sentence)  
+                words = self.textNormalizer.word_tokenizer(sentence)         
                 self.corpus_sent_size +=1              
                 for word in words:
                     word_lower = self.textNormalizer.case_conversion(word) 
-                    if word_lower in model_lexicon:              
-                        if model_lexicon[word_lower]['last_document']!= document_counter:
-                            model_lexicon[word_lower]['doc_counter'] +=1
+                    # stop words removal
+                    if word_lower not in self.textNormalizer.stop_words:     
+                        if word_lower in model_lexicon:              
+                            if model_lexicon[word_lower]['last_document']!= document_counter:
+                                model_lexicon[word_lower]['doc_counter'] +=1
+                                model_lexicon[word_lower]['last_document'] = document_counter
+                            if model_lexicon[word_lower] ['last_sentence'] != sentence_counter:
+                                model_lexicon[word_lower]['sent_counter'] +=1
+                                model_lexicon[word_lower] ['last_sentence'] = sentence_counter                                
+                            model_lexicon[word_lower]['counter'] +=1
+                        else:
+                            model_lexicon[word_lower] = {'counter':1, 'doc_counter':1, 'sent_counter':1}
                             model_lexicon[word_lower]['last_document'] = document_counter
-                        if model_lexicon[word_lower] ['last_sentence'] != sentence_counter:
-                            model_lexicon[word_lower]['sent_counter'] +=1
-                            model_lexicon[word_lower] ['last_sentence'] = sentence_counter                                
-                        model_lexicon[word_lower]['counter'] +=1
-                    else:
-                        model_lexicon[word_lower] = {'counter':1, 'doc_counter':1, 'sent_counter':1}
-                        model_lexicon[word_lower]['last_document'] = document_counter
-                        model_lexicon[word_lower]['last_sentence'] = last_sentence
+                            model_lexicon[word_lower]['last_sentence'] = last_sentence
                 sentence_counter += 1
             document_counter +=1
         sorted_lexicon = dict(sorted(model_lexicon.items()))
@@ -62,9 +69,11 @@ class BagOfWords:
     def build_sentence_bow(self, sentence):
         normalized_sentence = self.textNormalizer.sentence_tokenizer(sentence)
         words = self.textNormalizer.word_tokenizer(normalized_sentence[0])
-        normalized_words = []
+        normalized_words = []        
         for word in words:
-            normalized_words.append(self.textNormalizer.case_conversion(word))
+            lower_case_word = self.textNormalizer.case_conversion(word)
+            if lower_case_word not in self.textNormalizer.stop_words:
+                normalized_words.append(lower_case_word)
         bow_vector = []
         model_lexicon_list = list(self.lexicon)
         for position in range(len(model_lexicon_list)):
