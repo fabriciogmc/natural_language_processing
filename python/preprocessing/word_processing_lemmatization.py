@@ -15,8 +15,9 @@ stanza_nlp = stanza.Pipeline('pt')
 
 
 sample_text_pt = "Nesse mês ocorreu um fenômeno muito raro durante a primeira semana."
-sample_text_pt_2 = (, correu e viu a lindíssima"
-                    " a puríssima e a riquíssima")
+sample_text_pt_2 = (" a mulherada correu e viu a lindíssima floreira no vaso da janela" 
+                     " rapidamente notou-se que precisaria de água" 
+                     " a puríssima e a riquíssima responsável pela vida ")
 
 spacy_nlp = spacy.load('pt_core_news_sm',  disable = ['parser','ner'])
 print([ token.lemma_ for token in spacy_nlp(sample_text_pt)])
