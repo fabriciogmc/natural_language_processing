@@ -34,7 +34,7 @@ print(feature_df)
 # Similarity matrix computation
 similarity_matrix = cosine_similarity(feature_vectors)
 Z = linkage(similarity_matrix, 'ward')
-max_dist = 2.
+max_dist = 1
 cluster_labels = fcluster(Z, max_dist, criterion='distance')
 cluster_labels = DataFrame(cluster_labels, columns=['Cluster Label'])
 final_table = pd.concat([corpus_df, cluster_labels], axis=1)
