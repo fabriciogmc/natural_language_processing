@@ -5,3 +5,7 @@ env/
 # extensions
 
 *.pyc
+
+# notebook states
+.ipynb_checkpoints/
+
