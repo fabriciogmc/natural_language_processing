@@ -9,3 +9,5 @@ env/
 # notebook states
 .ipynb_checkpoints/
 
+# temporary files
+.DS_Store
