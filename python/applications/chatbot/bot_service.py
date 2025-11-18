@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from bot_model import preprocess, representation, classify
 
-
 app = Flask(__name__)
 CORS(app)
 
@@ -17,6 +16,5 @@ def bot_service():
     data = {"response": response_class}
     return jsonify(data)
 
-# 4. This block allows you to run the app directly
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)

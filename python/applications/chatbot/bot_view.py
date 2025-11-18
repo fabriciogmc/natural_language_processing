@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 app = Flask(__name__)
+
 # Basic front-end route
 @app.route('/')
 def bot_service():
