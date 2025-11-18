@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script type="module" src="{{ url_for('static', filename='scripts/front_proccess.js') }}" defer></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    </head>
+    <body>
+        <textarea id="chat"></textarea>
+        <input id=text_input class="submit-text-input" type="text">
+        <button id=submit_button class="submit-button"> Send Message </button>
+        
+    </body>
+</html>

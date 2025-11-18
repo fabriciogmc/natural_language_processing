@@ -1,0 +1,26 @@
+
+#chat{
+    display:block;
+    width: 50%;
+    height: 50vh; 
+    margin:auto;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: rgb(200,200,200);
+}
+.submit-text-input{
+    display: block;
+    width: 50%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.submit-button{
+    display:block;
+    margin: auto;
+    width: 50%;
+    box-sizing: border-box;
+    color:white;
+    background-color: black;
+    
+}
