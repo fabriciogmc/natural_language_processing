@@ -15,7 +15,10 @@ Perform the following steps before you try to run each example:
     <li class='cl'> pip install spacy </li>    
     </ul>
 <li> In the command prompt, install some models typing 
-<span class='cl'> python -m nltk.downloader popular </span> and
-<span class="cl"> python -m spacy download pt_core_news_sm en_core_web_sm</span> </li>
+<ul> 
+    <li><span class='cl'> python -m nltk.downloader popular </li>
+    <li><span class="cl"> python -m spacy download pt_core_news_sm </splan> </li>
+    <li><span class="cl"> python -m spacy download en_core_web_sm </splan> </li>
+</ul>
 <li> Then, run the examples.
 </ol>
